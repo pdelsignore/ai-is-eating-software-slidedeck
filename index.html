@@ -101,6 +101,15 @@
     .d8 { transition-delay: 0.75s; }
     .d9 { transition-delay: 0.85s; }
 
+    /* ─── Step items (reveal one at a time on navigate) ─────────── */
+    .step-item {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .step-item.revealed { opacity: 1; transform: translateY(0); }
+
     /* ─── Navigation ─────────────────────────────────────────────── */
     #nav {
       position: fixed; bottom: 2.2rem; left: 50%;
@@ -271,8 +280,39 @@
     </p>
   </section>
 
-  <!-- ── SLIDE 3 — JEVONS PARADOX ────────────────────────────────── -->
-  <section class="slide" id="slide-3">
+  <!-- ── SLIDE 3 — STOCK DECLINES ───────────────────────────────── -->
+  <section class="slide" id="slide-3" style="align-items:center;text-align:center;">
+    <div style="position:absolute;inset:0;z-index:0;">
+      <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2560&auto=format&fit=crop"
+           alt="" aria-hidden="true"
+           style="width:100%;height:100%;object-fit:cover;opacity:0.12;mix-blend-mode:luminosity;filter:saturate(0.3);" />
+    </div>
+    <div style="width:min(860px,84vw);position:relative;z-index:1;">
+      <span class="anim d1" style="font-size:0.6rem;font-weight:300;letter-spacing:0.32em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2rem;">SaaSpocalypse 2026</span>
+      <h2 class="anim d2" style="font-family:var(--f-display);font-size:clamp(2.4rem,5vw,5rem);font-weight:300;line-height:1.05;letter-spacing:-0.02em;color:var(--text);margin-bottom:3rem;">Who's <em style="font-style:italic;color:var(--accent);">Bleeding</em></h2>
+      <ul style="list-style:none;">
+        <li class="anim" style="transition-delay:0.5s;display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line-warm);">
+          <span style="font-family:var(--f-display);font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:300;color:var(--text);">Salesforce <span style="color:var(--muted);font-size:0.75em;letter-spacing:0.08em;">CRM</span></span>
+          <span style="font-size:0.65rem;font-weight:300;letter-spacing:0.22em;text-transform:uppercase;color:#c0504a;">Down 26% – 30%</span>
+        </li>
+        <li class="anim" style="transition-delay:1.5s;display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0;border-bottom:1px solid var(--line-warm);">
+          <span style="font-family:var(--f-display);font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:300;color:var(--text);">Workday <span style="color:var(--muted);font-size:0.75em;letter-spacing:0.08em;">WDAY</span></span>
+          <span style="font-size:0.65rem;font-weight:300;letter-spacing:0.22em;text-transform:uppercase;color:#c0504a;">Down 33%</span>
+        </li>
+        <li class="anim" style="transition-delay:2.5s;display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0;border-bottom:1px solid var(--line-warm);">
+          <span style="font-family:var(--f-display);font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:300;color:var(--text);">ServiceNow <span style="color:var(--muted);font-size:0.75em;letter-spacing:0.08em;">NOW</span></span>
+          <span style="font-size:0.65rem;font-weight:300;letter-spacing:0.22em;text-transform:uppercase;color:#c0504a;">Down 15% – 20%</span>
+        </li>
+        <li class="anim" style="transition-delay:3.5s;display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0;border-bottom:1px solid var(--line-warm);">
+          <span style="font-family:var(--f-display);font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:300;color:var(--text);">Adobe <span style="color:var(--muted);font-size:0.75em;letter-spacing:0.08em;">ADBE</span></span>
+          <span style="font-size:0.65rem;font-weight:300;letter-spacing:0.22em;text-transform:uppercase;color:#c0504a;">Down 18%</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── SLIDE 4 — JEVONS PARADOX ────────────────────────────────── -->
+  <section class="slide" id="slide-4" style="align-items:center;text-align:center;">
     <div style="position:absolute;inset:0;z-index:0;">
       <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2560&auto=format&fit=crop"
            alt="" aria-hidden="true"
@@ -280,17 +320,22 @@
     </div>
     <div style="max-width:860px;position:relative;z-index:1;">
       <span class="anim d1" style="font-size:0.6rem;font-weight:300;letter-spacing:0.32em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2rem;">Economics · 1865</span>
-      <h2 class="anim d2" style="font-family:var(--f-display);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:1;letter-spacing:-0.02em;color:var(--text);margin-bottom:2.5rem;">Jevons<br />Paradox</h2>
-      <div class="anim d3" style="width:3rem;height:1px;background:var(--accent);margin-bottom:2.5rem;opacity:0.7;"></div>
+      <h2 class="anim d2" style="font-family:var(--f-display);font-size:clamp(3rem,6vw,6.5rem);font-weight:300;line-height:1;letter-spacing:-0.02em;color:var(--text);margin-bottom:2.5rem;">Jevons Paradox</h2>
+      <div class="anim d3" style="width:3rem;height:1px;background:var(--accent);margin:0 auto 2.5rem;opacity:0.7;"></div>
       <p class="anim d4" style="font-family:var(--f-display);font-size:clamp(1.2rem,2.6vw,2.2rem);font-weight:300;font-style:italic;color:var(--muted);line-height:1.5;max-width:720px;">
         "When software becomes democratized<br />and inexpensive, there is more of it."
       </p>
     </div>
   </section>
 
-  <!-- ── SLIDE 4 — BUILDING (exact copy from future-proof-ai) ─────── -->
-  <section class="slide" id="slide-4">
-    <div class="pillar">
+  <!-- ── SLIDE 5 — BUILDING (exact copy from future-proof-ai) ─────── -->
+  <section class="slide" id="slide-5">
+    <div style="position:absolute;inset:0;z-index:0;">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2560&auto=format&fit=crop"
+           alt="" aria-hidden="true"
+           style="width:100%;height:100%;object-fit:cover;opacity:0.10;mix-blend-mode:luminosity;filter:saturate(0.3);" />
+    </div>
+    <div class="pillar" style="position:relative;z-index:1;">
       <div class="pillar-left">
         <div class="pillar-number anim d1">02</div>
         <h2 class="pillar-heading anim d2"><em>Building</em></h2>
@@ -321,8 +366,8 @@
     </div>
   </section>
 
-  <!-- ── SLIDE 5 — CLOSING ───────────────────────────────────────── -->
-  <section class="slide" id="slide-5" style="align-items:center;text-align:center;">
+  <!-- ── SLIDE 6 — CLOSING ───────────────────────────────────────── -->
+  <section class="slide" id="slide-6" style="align-items:center;text-align:center;">
     <div style="position:absolute;inset:0;z-index:0;">
       <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2560&auto=format&fit=crop"
            alt="" aria-hidden="true"
